@@ -1,19 +1,21 @@
+default_language_version:
+  python: python3.13
+
 repos:
   - repo: local
     hooks:
-      - id: ruff-format
-        name: Ruff formatter
-        entry: ruff format
-        language: system
-        types: [python]
-
+      # Both hooks run the project's ruff via uv (from the venv) — same version as CI.
+      # They check only the staged files (fast); CI checks the whole repo.
       - id: ruff-check
         name: Ruff linter
-        entry: ruff check --fix --unsafe-fixes
+        entry: uv run --no-sync ruff check --fix
         language: system
         types: [python]
-        pass_filenames: false
-        args: [.]
+      - id: ruff-format
+        name: Ruff formatter
+        entry: uv run --no-sync ruff format
+        language: system
+        types: [python]
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v5.0.0

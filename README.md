@@ -27,7 +27,7 @@
 uv venv && .venv\Scripts\activate  # Windows
 # uv venv && source .venv/bin/activate  # Linux/Mac
 uv sync --group dev
-pre-commit install
+uv run pre-commit install            # hooks run automatically on git commit
 cp .env.example .env  # Puis renseigner les valeurs
 ```
 
@@ -51,6 +51,6 @@ cp .env.example .env  # Puis renseigner les valeurs
 pytest
 
 # Lint & format
-ruff check . --fix
-ruff format .
+uv run ruff check . --fix
+uv run ruff format .
 ```
