@@ -15,26 +15,31 @@
    - `{{YEAR}}` → année en cours
    - `{{AUTHOR_NAME}}` → ton nom
 4. LICENSE : mettre à jour ou supprimer selon le type de projet (client = supprimer, open source = garder)
-5. Activer la CI : renommer `.github/workflows/ci.yml.disabled` → `ci.yml`
-6. Supprimer ce fichier `TEMPLATE.md`
-7. Setup :
+5. Adapter `CLAUDE.md` (contexte, lien Notion) — ou le supprimer si pas d'usage agent
+6. Activer la CI : renommer `.github/workflows/ci.yml.disabled` → `ci.yml`
+7. Supprimer ce fichier `TEMPLATE.md`
+8. Setup :
 
-**Prérequis** : Python 3.13+, [uv](https://github.com/astral-sh/uv) (`pip install uv`)
+**Prérequis** : [uv](https://docs.astral.sh/uv/) (installateur standalone, gère aussi Python) :
+
+```powershell
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+```
 
 ```bash
-uv venv && .venv\Scripts\activate  # Windows
-uv sync --group dev
-pre-commit install
+uv sync --group dev                # crée .venv + installe Python 3.13 si absent
+.venv\Scripts\activate             # Windows (Linux/Mac : source .venv/bin/activate)
+uv run pre-commit install
 cp .env.example .env
 ```
 
-8. Ajouter les dépendances spécifiques au projet :
+9. Ajouter les dépendances spécifiques au projet :
 
 ```bash
 uv add pandas duckdb  # etc.
 ```
 
-9. Premier commit :
+10. Premier commit :
 
 ```bash
 git add .

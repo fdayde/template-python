@@ -9,7 +9,11 @@
 
 ## Installation
 
-**Prérequis** : Python 3.13+, [uv](https://github.com/astral-sh/uv) (`pip install uv`)
+**Prérequis** : [uv](https://docs.astral.sh/uv/) — installateur standalone, gère aussi Python :
+
+```powershell
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+```
 
 ### Stack
 
@@ -24,10 +28,9 @@
 ### Setup
 
 ```bash
-uv venv && .venv\Scripts\activate  # Windows
-# uv venv && source .venv/bin/activate  # Linux/Mac
-uv sync --group dev
-uv run pre-commit install            # hooks run automatically on git commit
+uv sync --group dev                # crée .venv + installe Python 3.13 si absent
+.venv\Scripts\activate             # Windows (Linux/Mac : source .venv/bin/activate)
+uv run pre-commit install          # hooks run automatically on git commit
 cp .env.example .env  # Puis renseigner les valeurs
 ```
 

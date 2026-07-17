@@ -1,0 +1,22 @@
+# EditorConfig — editor-level defaults (https://editorconfig.org)
+# Line endings mirror .gitattributes (git-side enforcement): LF everywhere,
+# CRLF for Windows-only scripts.
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 4
+
+[*.{yml,yaml,toml,json}]
+indent_size = 2
+
+[*.md]
+# keep Markdown hard line breaks (trailing double space)
+trim_trailing_whitespace = false
+
+[*.{bat,cmd,ps1}]
+end_of_line = crlf

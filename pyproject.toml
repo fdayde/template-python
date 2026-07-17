@@ -9,7 +9,7 @@ dependencies = []
 dev = [
     "pre-commit>=4.0.0",
     "pytest>=8.0.0",
-    "ruff>=0.8.0",
+    "ruff>=0.15,<0.16",  # bounded: patch updates flow, no minor jump = stable formatter output
 ]
 
 [tool.ruff]
